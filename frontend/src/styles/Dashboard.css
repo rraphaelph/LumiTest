@@ -103,16 +103,18 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
+  .invoice-icon {
+    display: none;
+  }
+  
+  .invoice-text {
+    display: inline;
+  }
+  
   @media screen and (max-width: 768px) {
     .upload-form {
       flex-direction: column;
       gap: 15px;
-    }
-  
-    .upload-btn,
-    .invoice-link {
-      width: 100%;
-      margin-top: 10px;
     }
   
     .customer-section {
@@ -133,6 +135,14 @@
   
     .chart-title {
       font-size: 1.3rem;
+    }
+  
+    .invoice-text {
+      display: none;
+    }
+  
+    .invoice-icon {
+      display: inline;
     }
   }
   

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify'; // Import Toastify
 import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
 import './../styles/Dashboard.css';
+import { FaFolderOpen } from 'react-icons/fa'; 
 
 // Helper function to sort months (mapping month abbreviations to numbers)
 const monthMap = {
@@ -145,9 +146,10 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <ToastContainer />
       <div className="navigation-bar">
-        <Link to="/invoices" className="invoice-link">
-          Acessar Biblioteca de Faturas
-        </Link>
+      <Link to="/invoices" className="invoice-link">
+        <span className="invoice-text">Acessar Biblioteca de Faturas</span>
+        <FaFolderOpen className="invoice-icon" size={24} />
+      </Link>
         <h1 className="dashboard-title">Dashboard de Energia</h1>
       </div>
 
