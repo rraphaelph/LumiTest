@@ -8,6 +8,9 @@
       "esModuleInterop": true,         // Suporte para imports ESModules
       "skipLibCheck": true             // Pular checagem de tipos nas definições de tipos (melhora a performance)
     },
+    "loader": {
+      ".pdf": "file", // Ignora arquivos PDF
+    },
     "include": ["src/**/*"],           // Incluir todos os arquivos dentro de `src/`
     "exclude": ["node_modules"]        // Excluir `node_modules`
   }

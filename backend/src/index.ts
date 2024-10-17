@@ -5,7 +5,7 @@ import invoiceRoutes from './routes/invoiceRoutes';
 
 const prisma = new PrismaClient();
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT ? Number(process.env.PORT) : 3001;
 
 // Middleware para habilitar CORS e JSON parsing
 app.use(cors());
@@ -24,7 +24,10 @@ export default app;
 
 // Iniciar o servidor (para execução normal fora dos testes)
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+  app.listen({
+    host: '0.0.0.0',
+    port
+  }).on('listening', () => {
+    console.log(`Servidor Express iniciado na porta ${port}`);
   });
 }
