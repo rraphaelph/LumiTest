@@ -18,7 +18,7 @@ const InvoiceLibrary = () => {
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear()); // Estado para o filtro do ano
 
   useEffect(() => {
-    api.get('/invoices').then((response) => {
+    api.get('/api/invoices').then((response) => {
       setInvoices(response.data);
       setFilteredInvoices(response.data); // Inicialmente, todas as faturas
     });
@@ -26,7 +26,7 @@ const InvoiceLibrary = () => {
 
   const handleDownload = (id: number) => {
     api
-      .get(`/invoices/${id}/download`, { responseType: 'blob' })
+      .get(`/api/invoices/${id}/download`, { responseType: 'blob' })
       .then((response) => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');

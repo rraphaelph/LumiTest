@@ -28,7 +28,7 @@ const Dashboard = () => {
   const [customerData, setCustomerData] = useState<{ [key: string]: any[] }>({});
 
   useEffect(() => {
-    api.get('/invoices').then((response) => {
+    api.get('/api/invoices').then((response) => {
       const formattedData = response.data.map((invoice: any) => {
         const [month, year] = invoice.referenceMonth.split('/');
         return {
@@ -81,13 +81,13 @@ const Dashboard = () => {
     setIsUploading(true);
 
     try {
-      await axios.post('/api/invoices', formData, {
+      await api.post('/api/invoices', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
 
-      const response = await axios.get('/api/invoices');
+      const response = await api.get('/api/invoices');
       const formattedData = response.data.map((invoice: any) => {
         const [month, year] = invoice.referenceMonth.split('/');
         return {
