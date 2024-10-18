@@ -52,9 +52,27 @@ Depois de configurar o arquivo `.env`, rode as migrações do Prisma para config
 npx prisma migrate dev --name init
 ```
 
-#### 2.4. Iniciar o Backend
+#### 2.4. Scripts do Backend
 
-Agora, inicie o servidor do backend:
+O arquivo `package.json` do backend contém os seguintes scripts:
+
+```json
+"scripts": {
+  "test": "jest",
+  "dev": "nodemon",
+  "build": "tsup src/index.ts --minify",
+  "start": "node dist/index.js"
+}
+```
+
+- **`npm run test`**: Executa os testes com o Jest.
+- **`npm run dev`**: Inicia o servidor de desenvolvimento com o Nodemon.
+- **`npm run build`**: Gera o build do projeto com o `tsup`.
+- **`npm start`**: Inicia o servidor de produção com o Node.js.
+
+#### 2.5. Iniciar o Backend
+
+Agora, inicie o servidor do backend em modo de desenvolvimento:
 
 ```bash
 npm run dev
@@ -99,4 +117,3 @@ Os testes irão validar a extração de dados de PDFs, a inserção correta no b
 ## Observações Finais
 
 Este projeto foi desenvolvido como parte do teste prático da Lumi. Ele inclui a extração de dados de PDFs de faturas de energia, uma API com integração ao PostgreSQL e testes automatizados para garantir o funcionamento correto das funcionalidades principais.
-
