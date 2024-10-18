@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Invoice } from '../types/Invoice';
 import './../styles/InvoiceLibrary.css';
 import { FaDownload, FaArrowLeft } from 'react-icons/fa'; // Ícones de download e seta para voltar
 import { Link } from 'react-router-dom'; // Importa o Link para navegação
+import api from '../api/api';
 
 // Abreviações dos meses (mesmo formato usado no banco de dados)
 const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
@@ -18,15 +18,15 @@ const InvoiceLibrary = () => {
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear()); // Estado para o filtro do ano
 
   useEffect(() => {
-    axios.get('/api/invoices').then((response) => {
+    api.get('/invoices').then((response) => {
       setInvoices(response.data);
       setFilteredInvoices(response.data); // Inicialmente, todas as faturas
     });
   }, []);
 
   const handleDownload = (id: number) => {
-    axios
-      .get(`/api/invoices/${id}/download`, { responseType: 'blob' })
+    api
+      .get(`/invoices/${id}/download`, { responseType: 'blob' })
       .then((response) => {
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement('a');
